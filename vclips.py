@@ -85,10 +85,9 @@ def _check_file_exists(filename):
 def _check_valid_file_extension(filename):
     path_object = Path(filename)
     file_extension = path_object.suffix
-    file_extension_recommended = '.mp4'
 
     message = f'"{filename}" must be in ".mp4" format!'
-    assert file_extension == file_extension_recommended, message
+    assert file_extension == OUTPUT_FORMAT, message
 
 
 def _build_clip_objects_from_clip_names(clip_names):
@@ -230,12 +229,15 @@ def trim(url_or_file, timestamps, output):
         print_rich('Trimming the video with these timestamps:')
         print_in_tree(branches=timestamps)
 
+        # If `output` file name is specified, don't append the descriptor.
+        descriptor = '' if output else 'trimmed'
+
         output_file = ''
         if is_url:
             clip_objects = _build_clip_objects_from_timestamps(filename, timestamps)
             output_file = output or filename
 
-            _merge_clips_and_save(clip_objects, output_file, 'trimmed')
+            _merge_clips_and_save(clip_objects, output_file, descriptor)
 
             # Remove the original video downloaded by VIDEO_DOWNLOADER.
             os.remove(filename)
@@ -246,7 +248,7 @@ def trim(url_or_file, timestamps, output):
             clip_objects = _build_clip_objects_from_timestamps(input_video, timestamps)
             output_file = output or input_video
 
-            _merge_clips_and_save(clip_objects, output_file, 'trimmed')
+            _merge_clips_and_save(clip_objects, output_file, descriptor)
     else:
         message = 'There\'s no specified timestamps.'
 
