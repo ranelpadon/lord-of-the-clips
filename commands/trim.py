@@ -3,6 +3,8 @@ import os
 import rich_click as click
 
 from utils import (
+    OUTPUT_FILE_EXTENSION,
+    OUTPUT_FILE_FORMAT,
     build_clip_objects_from_clip_names,
     build_clip_objects_from_timestamps,
     check_file_exists,
@@ -41,14 +43,14 @@ def trim(url_or_file, timestamps, output):
 
     \b
     [green]URL[/]
-    * vclips [cyan]trim[/] https://www.youtube.com/watch?v=Y7JG63IuaWs
-    * vclips [cyan]trim[/] https://www.youtube.com/watch?v=Y7JG63IuaWs 0:30-0:45
-    * vclips [cyan]trim[/] --output bar.mp4 https://www.youtube.com/watch?v=Y7JG63IuaWs 0:30-0:45 1:10-1:40.8
+    * lotc [cyan]trim[/] https://www.youtube.com/watch?v=Y7JG63IuaWs
+    * lotc [cyan]trim[/] https://www.youtube.com/watch?v=Y7JG63IuaWs 0:30-0:45
+    * lotc [cyan]trim[/] --output bar.mp4 https://www.youtube.com/watch?v=Y7JG63IuaWs 0:30-0:45 1:10-1:40.8
 
     \b
     FILE
-    * vclips [cyan]trim[/] foo.mp4 0:30-0:45
-    * vclips [cyan]trim[/] --output bar.mp4 foo.mp4 0:30-0:45 1:10-1:40.8  [/]
+    * lotc [cyan]trim[/] foo.mp4 0:30-0:45
+    * lotc [cyan]trim[/] --output bar.mp4 foo.mp4 0:30-0:45 1:10-1:40.8  [/]
     """
     if output:
         check_valid_file_extension(output)

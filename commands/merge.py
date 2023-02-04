@@ -21,8 +21,8 @@ def merge(clips, output):
     [dim]
     Sample runs:
     \b
-    * vclips [cyan]merge[/] foo-1.mp4 foo-2.mp4
-    * vclips [cyan]merge[/] --output bar.mp4 foo-1.mp4 foo-2.mp4 baz.mp4  [/]
+    * lotc [cyan]merge[/] foo-1.mp4 foo-2.mp4
+    * lotc [cyan]merge[/] --output bar.mp4 foo-1.mp4 foo-2.mp4 baz.mp4  [/]
     """
     if output:
         check_valid_file_extension(output)
