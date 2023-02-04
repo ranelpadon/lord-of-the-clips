@@ -2,6 +2,7 @@ import re
 from pathlib import Path
 
 import delegator
+from halo import Halo
 from moviepy.editor import (
     VideoFileClip,
     concatenate_videoclips,
@@ -10,14 +11,14 @@ from rich import print as print_rich
 from rich.traceback import install
 from rich.tree import Tree
 
-
 # Improve traceback rendering.
 install()
 
-VIDEO_DOWNLOADER = 'youtube-dl'
+VIDEO_DOWNLOADER = 'yt-dlp'
 
 # Use a safe conversion format since MoviePy has issue with some codecs.
-OUTPUT_FORMAT = '.mp4'
+OUTPUT_FILE_FORMAT = 'mp4'
+OUTPUT_FILE_EXTENSION = f'.{OUTPUT_FILE_FORMAT}'
 
 
 def strip_escape_characters(url):
@@ -25,6 +26,7 @@ def strip_escape_characters(url):
     return url.replace('\\', '')
 
 
+@Halo(spinner='dots')
 def download_video(url):
     command = delegator.run(f'{VIDEO_DOWNLOADER} --verbose {url}')
 
@@ -81,8 +83,8 @@ def check_valid_file_extension(filename):
     path_object = Path(filename)
     file_extension = path_object.suffix
 
-    message = f'"{filename}" must be in ".mp4" format!'
-    assert file_extension == OUTPUT_FORMAT, message
+    message = f'"{filename}" must be in "{OUTPUT_FILE_EXTENSION}" format!'
+    assert file_extension == OUTPUT_FILE_EXTENSION, message
 
 
 def build_clip_objects_from_clip_names(clip_names):
@@ -108,15 +110,15 @@ def get_concatenated_clip_names(clip_names):
         filenames.append(filename_without_extension)
 
     concatenated_names = ' - '.join(filenames)
-    return f'{concatenated_names}{OUTPUT_FORMAT}'
+    return f'{concatenated_names}{OUTPUT_FILE_EXTENSION}'
 
 
 def get_video_filename_from_download_output(download_output):
     # Match if the file is merged (mkv = mp4 + webm) or already existing.
     # Happens if `ffmpeg` is installed.
     pattern = (
-        '(\[ffmpeg\])? Merging formats into "(.+mkv|.+mp4)"'
-        '|\[download\] (.+mkv|.+mp4) has already been downloaded and merged'
+        '(\[ffmpeg\])? Merging formats into "(.+)"'
+        '|\[download\] (.+) has already been downloaded and merged'
     )
     match = re.search(pattern, download_output)
     if match:
@@ -125,7 +127,7 @@ def get_video_filename_from_download_output(download_output):
         return merged_filename_new or merged_filename_existing
 
     # Match if it's new file or already existing.
-    match = re.search('\[download\] (Destination: (.+mp4)|(.+mp4) has already been downloaded)', download_output)
+    match = re.search('\[download\] (Destination: (.+)|(.+) has already been downloaded)', download_output)
 
     if match:
         filename_new = match.group(2)
@@ -139,7 +141,7 @@ def get_effective_filename(filename, descriptor):
     # `/foo/bar/baz.mp4` will become `/foo/bar/baz`
     truncated_filename = path_object.with_suffix('')
 
-    return f'{truncated_filename} - {descriptor}{OUTPUT_FORMAT}'
+    return f'{truncated_filename} - {descriptor}{OUTPUT_FILE_EXTENSION}'
 
 
 def merge_clips_and_save(clip_objects, filename, descriptor=''):
