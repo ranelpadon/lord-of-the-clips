@@ -1,2 +1,2 @@
-# vclips
-CLI app to download videos (YouTube, Facebook, Reddit, etc). Can trim online/offline videos at multiple points, or merge multiple clips.
+# Lord of the Clips (LOTC)
+Video downloader, trimmer, and merger using the terminal. Supports YouTube, Facebook, Reddit, Twitter, etc. Trims at multiple points and merges multiple clips.
