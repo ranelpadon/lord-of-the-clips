@@ -5,12 +5,11 @@ from setuptools import (
 
 
 setup(
-    name='Lord of the Clips',
+    name='lord-of-the-clips',
     version='0.1.0',
     license='MIT',
     description='Video downloader, trimmer, and merger using the terminal. Supports YouTube, Facebook, Reddit, Twitter, etc. Trims at multiple points and merges multiple clips.',
-    long_description=open('README.md', encoding='utf-8').read(),
-    long_description_content_type='text/markdown',
+    readme='README.md',
     author='Ranel Padon',
     author_email='ranel.padon@gmail.com',
     url='https://github.com/ranelpadon/lord-of-the-clips',
@@ -39,6 +38,7 @@ setup(
         'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: 3 :: Only',
         'Topic :: Software Development',
+        'Topic :: Utilities',
     ],
     keywords=[
         'video',
