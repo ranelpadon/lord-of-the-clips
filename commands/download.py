@@ -1,16 +1,21 @@
 import os
 
 import rich_click as click
+from halo import Halo
+from moviepy.editor import VideoFileClip
 
 from utils import (
     OUTPUT_FILE_EXTENSION,
     build_clip_objects_from_timestamps,
     check_valid_file_extension,
     download_video,
-    get_video_filename_from_download_output,
+    get_filename_without_extension,
+    get_video_filename_from_download_logs,
     merge_clips_and_save,
     print_in_tree,
     print_rich,
+    save_as,
+    strip_bracketed_characters,
     strip_escape_characters,
 )
 
@@ -41,8 +46,8 @@ def download(url, timestamps, output):
     print_rich('Downloading the video...')
 
     url = strip_escape_characters(url)
-    download_output = download_video(url)
-    filename = get_video_filename_from_download_output(download_output)
+    download_logs = download_video(url)
+    filename = get_video_filename_from_download_logs(download_logs)
 
     if timestamps:
         print()
@@ -54,13 +59,30 @@ def download(url, timestamps, output):
 
         clip_objects = build_clip_objects_from_timestamps(filename, timestamps)
         output_file = output or filename
+        output_file = strip_bracketed_characters(output_file)
 
         merge_clips_and_save(clip_objects, output_file, descriptor)
 
         # Remove the original video downloaded by VIDEO_DOWNLOADER.
         os.remove(filename)
     else:
-        message = 'There\'s no specified timestamps.'
+        # Convert to `mp4` format if needed.
+        # Converting HD videos using MoviePy seems to have better quality
+        # than downloading video directly with `--format mp4` option.
+        if not filename.endswith(OUTPUT_FILE_EXTENSION):
+            print_rich(f'Converting to [green]{OUTPUT_FILE_EXTENSION}[/]...')
 
+            clip_object = VideoFileClip(filename)
+
+            original_filename = filename
+            filename_without_extension = get_filename_without_extension(filename)
+            filename = f'{filename_without_extension}{OUTPUT_FILE_EXTENSION}'
+            filename = strip_bracketed_characters(filename)
+
+            with Halo(spinner='dots'):
+                save_as(clip_object, filename)
+                os.remove(original_filename)
+
+        message = 'There\'s no specified timestamps.'
         print(f'{message} The full video is downloaded.')
-        print_rich(f'\nFile saved as [blue]{filename}[/blue]')
+        print_rich(f'\nFile saved as [blue]"{filename}"[/blue]')
