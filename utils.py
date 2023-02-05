@@ -26,6 +26,12 @@ def strip_escape_characters(url):
     return url.replace('\\', '')
 
 
+def strip_bracketed_characters(text):
+    # The VIDEO_DOWNLOADER will insert tokens in the downloaded video's filename
+    # which messes-up with `rich`'s print function due to the enclosing brackets.
+    return re.sub(r'\s?\[.+\]', '', text)
+
+
 @Halo(spinner='dots')
 def download_video(url):
     command = delegator.run(f'{VIDEO_DOWNLOADER} --verbose {url}')
@@ -87,6 +93,13 @@ def check_valid_file_extension(filename):
     assert file_extension == OUTPUT_FILE_EXTENSION, message
 
 
+def get_filename_without_extension(filename):
+    path_object = Path(filename)
+
+    # Get the `baz` in `foo/bar/baz.mp4`.
+    return path_object.stem
+
+
 def build_clip_objects_from_clip_names(clip_names):
     clip_objects = []
 
@@ -103,31 +116,28 @@ def get_concatenated_clip_names(clip_names):
 
     for clip_name in clip_names:
         check_file_exists(clip_name)
-        path_object = Path(clip_name)
-
-        # Get the `baz` in `foo/bar/baz.mp4`.
-        filename_without_extension = path_object.stem
+        filename_without_extension = get_filename_without_extension(clip_name)
         filenames.append(filename_without_extension)
 
     concatenated_names = ' - '.join(filenames)
     return f'{concatenated_names}{OUTPUT_FILE_EXTENSION}'
 
 
-def get_video_filename_from_download_output(download_output):
+def get_video_filename_from_download_logs(download_logs):
     # Match if the file is merged (mkv = mp4 + webm) or already existing.
     # Happens if `ffmpeg` is installed.
     pattern = (
         '(\[ffmpeg\])? Merging formats into "(.+)"'
         '|\[download\] (.+) has already been downloaded and merged'
     )
-    match = re.search(pattern, download_output)
+    match = re.search(pattern, download_logs)
     if match:
         merged_filename_new = match.group(2)
         merged_filename_existing = match.group(3)
         return merged_filename_new or merged_filename_existing
 
     # Match if it's new file or already existing.
-    match = re.search('\[download\] (Destination: (.+)|(.+) has already been downloaded)', download_output)
+    match = re.search('\[download\] (Destination: (.+)|(.+) has already been downloaded)', download_logs)
 
     if match:
         filename_new = match.group(2)
@@ -142,6 +152,11 @@ def get_effective_filename(filename, descriptor):
     truncated_filename = path_object.with_suffix('')
 
     return f'{truncated_filename} - {descriptor}{OUTPUT_FILE_EXTENSION}'
+
+
+def save_as(clip_object, filename):
+    # Disable the logger to minimize clutter.
+    clip_object.write_videofile(filename, logger=None)
 
 
 def merge_clips_and_save(clip_objects, filename, descriptor=''):
