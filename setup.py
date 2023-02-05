@@ -1,24 +1,36 @@
-import io
 from setuptools import (
     find_packages,
     setup,
 )
 
 
-def dependencies(file):
-    with open(file) as f:
-        return f.read().splitlines()
-
-
-with io.open('README.md', encoding='utf-8') as readme_file:
-    long_description = readme_file.read()
-
-
 setup(
     name='Lord of the Clips',
     version='0.1.0',
     license='MIT',
+    description='Video downloader, trimmer, and merger using the terminal. Supports YouTube, Facebook, Reddit, Twitter, etc. Trims at multiple points and merges multiple clips.',
+    long_description=open('README.md', encoding='utf-8').read(),
+    long_description_content_type='text/markdown',
+    author='Ranel Padon',
+    author_email='ranel.padon@gmail.com',
+    url='https://github.com/ranelpadon/lord-of-the-clips',
+    python_requires='>=3.7',
+    packages=find_packages(),
+    include_package_data=True,
+    install_requires=open('requirements.txt').read().splitlines(),
+    entry_points={
+        'console_scripts': [
+            'lotc = main:cli',
+        ],
+    },
     classifiers=[
+        'Intended Audience :: Developers',
+        'Intended Audience :: End Users/Desktop',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: MacOS',
+        'Operating System :: Microsoft :: Windows',
+        'Operating System :: POSIX',
+        'Operating System :: POSIX :: Linux',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
@@ -26,14 +38,8 @@ setup(
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: 3 :: Only',
+        'Topic :: Software Development',
     ],
-    python_requires='>=3.7',
-    description='Video downloader, trimmer, and merger using the terminal. Supports YouTube, Facebook, Reddit, Twitter, etc. Trims at multiple points and merges multiple clips.',
-    long_description=long_description,
-    long_description_content_type='text/markdown',
-    author='Ranel Padon',
-    author_email='ranel.padon@gmail.com',
-    url='https://github.com/ranelpadon/lord-of-the-clips',
     keywords=[
         'video',
         'downloader',
@@ -56,12 +62,5 @@ setup(
         'clip',
         'subclip',
     ],
-    packages=find_packages(),
-    include_package_data=True,
-    install_requires=dependencies('requirements.txt'),
-    entry_points={
-        'console_scripts': [
-            'lotc = main:cli',
-        ],
-    },
+    platforms=['Windows', 'macOS', 'Linux'],
 )
