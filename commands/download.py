@@ -9,6 +9,7 @@ from utils import (
     build_clip_objects_from_timestamps,
     check_valid_file_extension,
     download_video,
+    get_effective_filename,
     get_filename_without_extension,
     get_video_filename_from_download_logs,
     merge_clips_and_save,
@@ -49,6 +50,7 @@ def download(url, timestamps, output):
     download_logs = download_video(url)
     filename = get_video_filename_from_download_logs(download_logs)
 
+    output_file = ''
     if timestamps:
         print()
         print_rich('Trimming the video with these timestamps:')
@@ -60,8 +62,9 @@ def download(url, timestamps, output):
         clip_objects = build_clip_objects_from_timestamps(filename, timestamps)
         output_file = output or filename
         output_file = strip_bracketed_characters(output_file)
+        output_file = get_effective_filename(output_file, descriptor)
 
-        merge_clips_and_save(clip_objects, output_file, descriptor)
+        merge_clips_and_save(clip_objects, output_file)
 
         # Remove the original video downloaded by VIDEO_DOWNLOADER.
         os.remove(filename)
@@ -77,12 +80,14 @@ def download(url, timestamps, output):
             original_filename = filename
             filename_without_extension = get_filename_without_extension(filename)
             filename = f'{filename_without_extension}{OUTPUT_FILE_EXTENSION}'
-            filename = strip_bracketed_characters(filename)
+
+            output_file = output or filename
+            output_file = strip_bracketed_characters(output_file)
 
             with Halo(spinner='dots'):
-                save_as(clip_object, filename)
+                save_as(clip_object, output_file)
                 os.remove(original_filename)
 
-        message = 'There\'s no specified timestamps.'
-        print(f'{message} The full video is downloaded.')
-        print_rich(f'\nFile saved as [blue]"{filename}"[/blue]')
+        print('There\'s no specified timestamps. The full video is downloaded.')
+
+    print_rich(f'\nOutput file saved as [blue]{output_file}[/blue]')

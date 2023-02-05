@@ -30,5 +30,7 @@ def merge(clips, output):
 
     clip_names = clips
     clip_objects = build_clip_objects_from_clip_names(clip_names)
-    output_video = output or get_concatenated_clip_names(clip_names)
-    merge_clips_and_save(clip_objects, output_video)
+    output_file = output or get_concatenated_clip_names(clip_names)
+
+    merge_clips_and_save(clip_objects, output_file)
+    print_rich(f'\nOutput file saved as [blue]{output_file}[/blue]')

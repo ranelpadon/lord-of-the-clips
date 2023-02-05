@@ -6,6 +6,7 @@ from utils import (
     build_clip_objects_from_timestamps,
     check_file_exists,
     check_valid_file_extension,
+    get_effective_filename,
     merge_clips_and_save,
     print_in_tree,
     print_rich,
@@ -43,7 +44,9 @@ def trim(filename, timestamps, output):
 
         clip_objects = build_clip_objects_from_timestamps(filename, timestamps)
         output_file = output or filename
-        merge_clips_and_save(clip_objects, output_file, descriptor)
+        output_file = get_effective_filename(output_file, descriptor)
+
+        merge_clips_and_save(clip_objects, output_file)
+        print_rich(f'\nOutput file saved as [blue]{output_file}[/blue]')
     else:
-        message = 'There\'s no specified timestamps.'
-        print_rich(f'{message} The [blue]{filename}[/blue] will not be trimmed.')
+        print_rich(f'There\'s no specified timestamps. The [blue]{filename}[/blue] will not be trimmed.')

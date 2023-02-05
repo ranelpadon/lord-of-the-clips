@@ -146,6 +146,9 @@ def get_video_filename_from_download_logs(download_logs):
 
 
 def get_effective_filename(filename, descriptor):
+    if not descriptor:
+        return filename
+
     path_object = Path(filename)
 
     # `/foo/bar/baz.mp4` will become `/foo/bar/baz`
@@ -159,16 +162,9 @@ def save_as(clip_object, filename):
     clip_object.write_videofile(filename, logger=None)
 
 
-def merge_clips_and_save(clip_objects, filename, descriptor=''):
+def merge_clips_and_save(clip_objects, filename):
     merged_clips = concatenate_videoclips(clip_objects)
-
-    if descriptor:
-        filename = get_effective_filename(filename, descriptor)
-
     merged_clips.write_videofile(filename, logger=None)
-
-    print()
-    print_rich(f'Output file saved as [blue]{filename}[/blue]')
 
 
 def print_in_tree(header='', branches=None):
