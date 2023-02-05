@@ -15,19 +15,15 @@ from utils import (
 @click.option('-o', '--output', help='The output file name (e.g. "merged.mp4"). Should have the ".mp4" file extension.')
 def merge(clips, output):
     """
-    Merges the specified video CLIPS.
+    Merges the specified video CLIPS (filenames).
 
-    \b
-    [dim]
-    Sample runs:
-    \b
-    * lotc [cyan]merge[/] foo-1.mp4 foo-2.mp4
-    * lotc [cyan]merge[/] --output bar.mp4 foo-1.mp4 foo-2.mp4 baz.mp4  [/]
+    \b[dim]
+    Examples:
+        [green]lotc[/] [cyan]merge[/] foo-1.mp4 foo-2.mp4
+        [green]lotc[/] [cyan]merge[/] --output bar.mp4 foo-1.mp4 foo-2.mp4 baz.mp4  [/]
     """
     if output:
         check_valid_file_extension(output)
-
-    assert False
 
     print_rich('Merging these video clips:')
     print_in_tree(branches=clips)
