@@ -1,6 +1,6 @@
 import rich_click as click
 
-from utils import (
+from lotc.utils import (
     build_clip_objects_from_clip_names,
     check_valid_file_extension,
     get_concatenated_clip_names,

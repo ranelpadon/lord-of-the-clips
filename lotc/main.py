@@ -1,6 +1,6 @@
-from commands.download import download
-from commands.merge import merge
-from commands.trim import trim
+from lotc.commands.download import download
+from lotc.commands.merge import merge
+from lotc.commands.trim import trim
 
 import rich_click as click
 from rich.traceback import install

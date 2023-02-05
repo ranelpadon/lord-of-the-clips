@@ -2,7 +2,7 @@ import os
 
 import rich_click as click
 
-from utils import (
+from lotc.utils import (
     build_clip_objects_from_timestamps,
     check_file_exists,
     check_valid_file_extension,

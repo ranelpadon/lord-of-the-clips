@@ -4,7 +4,7 @@ import rich_click as click
 from halo import Halo
 from moviepy.editor import VideoFileClip
 
-from utils import (
+from lotc.utils import (
     OUTPUT_FILE_EXTENSION,
     build_clip_objects_from_timestamps,
     check_valid_file_extension,
