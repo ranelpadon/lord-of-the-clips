@@ -4,12 +4,17 @@ from setuptools import (
 )
 
 
+with open('README.md', encoding='utf-8') as readme:
+    long_description = readme.read()
+
+
 setup(
     name='lord-of-the-clips',
-    version='0.1.0',
+    version='0.1.2',
     license='MIT',
     description='Video downloader, trimmer, and merger using the terminal. Supports YouTube, Facebook, Reddit, Twitter, etc. Trims at multiple points and merges multiple clips.',
-    readme='README.md',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     author='Ranel Padon',
     author_email='ranel.padon@gmail.com',
     url='https://github.com/ranelpadon/lord-of-the-clips',
@@ -19,7 +24,7 @@ setup(
     install_requires=open('requirements.txt').read().splitlines(),
     entry_points={
         'console_scripts': [
-            'lotc = main:cli',
+            'lotc = lotc.main:cli',
         ],
     },
     classifiers=[
