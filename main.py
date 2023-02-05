@@ -1,3 +1,4 @@
+from commands.download import download
 from commands.merge import merge
 from commands.trim import trim
 
@@ -16,13 +17,32 @@ click.rich_click.STYLE_HELPTEXT = ''
 click.rich_click.STYLE_OPTION = 'yellow'
 click.rich_click.USE_RICH_MARKUP = True
 
+# Set the commands' ordering, instead of the alphabetical default.
+click.rich_click.COMMAND_GROUPS = {
+    'lotc': [
+        {
+            'name': 'Commands',
+            'commands': ['download', 'trim', 'merge'],
+        },
+    ]
+}
 
-# Register sub-commands as part of the `cli` group.
+
+# Define the main group/namespace for sub-commands.
 @click.group()
 def cli():
-    pass
+    """
+    Use [yellow]--help[/] in subcommands for more details.
+
+    \b[dim]
+    Examples:
+        [green]lotc[/] [cyan]download[/] [yellow]--help[/]
+        [green]lotc[/] [cyan]trim[/] [yellow]--help[/]
+        [green]lotc[/] [cyan]merge[/] [yellow]--help[/]
+    """
 
 
+cli.add_command(download)
 cli.add_command(merge)
 cli.add_command(trim)
 
