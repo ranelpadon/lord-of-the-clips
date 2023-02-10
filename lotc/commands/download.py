@@ -50,7 +50,7 @@ def download(url, timestamps, output):
     download_logs = download_video(url)
     filename = get_video_filename_from_download_logs(download_logs)
 
-    output_file = ''
+    output_file = output or filename
     if timestamps:
         print()
         print_rich('Trimming the video with these timestamps:')
@@ -60,7 +60,6 @@ def download(url, timestamps, output):
         descriptor = '' if output else 'trimmed'
 
         clip_objects = build_clip_objects_from_timestamps(filename, timestamps)
-        output_file = output or filename
         output_file = strip_bracketed_characters(output_file)
         output_file = get_effective_filename(output_file, descriptor)
 
@@ -87,7 +86,10 @@ def download(url, timestamps, output):
             with Halo(spinner='dots'):
                 save_as(clip_object, output_file)
                 os.remove(original_filename)
+        else:
+            output_file = strip_bracketed_characters(output_file)
 
         print('There\'s no specified timestamps. The full video is downloaded.')
 
-    print_rich(f'\nOutput file saved as [blue]{output_file}[/blue]')
+    print()
+    print_rich(f'Output file saved as [blue]{output_file}[/blue]')
