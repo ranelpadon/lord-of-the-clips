@@ -1,5 +1,5 @@
 # lord-of-the-clips (lotc)
-Video downloader, trimmer, and merger using the terminal. Supports YouTube, Facebook, Reddit, Twitter, TikTok, Instagram, LinkedIn, 9GAG, etc. Downloads/trims at multiple points. Merges multiple clips.
+Video downloader, trimmer, and merger using the terminal. Supports YouTube, Facebook, Reddit, Twitter, TikTok, Instagram, LinkedIn, 9GAG, [etc](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md). Downloads/trims at multiple points. Merges multiple clips.
 
 ## Standing on the Shoulders of Giants
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp): video downloader
