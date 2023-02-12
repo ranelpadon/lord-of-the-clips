@@ -10,7 +10,7 @@ with open('README.md', encoding='utf-8') as readme:
 
 setup(
     name='lord-of-the-clips',
-    version='0.1.2',
+    version='0.1.3',
     license='MIT',
     description='Video downloader, trimmer, and merger using the terminal. Supports YouTube, Facebook, Reddit, Twitter, etc. Trims at multiple points and merges multiple clips.',
     long_description=long_description,
