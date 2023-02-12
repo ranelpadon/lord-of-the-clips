@@ -5,7 +5,7 @@ Video downloader, trimmer, and merger using the terminal. Supports YouTube, Face
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp): video downloader
 - [moviepy](https://github.com/Zulko/moviepy): video trimmer/merger
 - [click](https://github.com/pallets/click/): CLI app creator
-- [rich](https://github.com/Textualize/rich)/[rich-click](https://github.com/ewels/rich-click/): CLI app styler
+- [rich](https://github.com/Textualize/rich) / [rich-click](https://github.com/ewels/rich-click/): CLI app styler
 
 ## Installation
 
