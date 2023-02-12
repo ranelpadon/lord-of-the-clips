@@ -3,13 +3,17 @@ Video downloader, trimmer, and merger using the terminal. Supports YouTube, Face
 
 ## Standing on the Shoulders of Giants
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp): video downloader
+    - `ffmpeg` is [strongly recommended](https://github.com/yt-dlp/yt-dlp#strongly-recommended) to be installed since some websites have split video/audio files:
+        - Mac: `brew install ffmpeg`
+        - Ubuntu: `sudo apt install ffmpeg`
+        - [Others](https://ffmpeg.org/download.html)
 - [moviepy](https://github.com/Zulko/moviepy): video trimmer/merger
 - [click](https://github.com/pallets/click/): CLI app creator
 - [rich](https://github.com/Textualize/rich) / [rich-click](https://github.com/ewels/rich-click/): CLI app styler
 
 ## Installation
 
-```bash
+```shell
 pip install lord-of-the-clips
 ```
 
@@ -21,13 +25,13 @@ This will install a global `lotc` shell command which you could run in the termi
 
 For further details/sample usages, run this command:
 
-```bash
+```shell
 lotc --help
 ```
 
 And for its subcommands:
 
-```bash
+```shell
 lotc download --help
 lotc trim --help
 lotc merge --help
