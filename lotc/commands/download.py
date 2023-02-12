@@ -23,17 +23,17 @@ from lotc.utils import (
 
 @click.command()
 @click.argument('url')
-@click.argument('timestamps', nargs=-1)
+@click.argument('durations', nargs=-1)
 @click.option('-o', '--output', help='The output file name (e.g. "trimmed.mp4"). Should have the ".mp4" file extension.')
-def download(url, timestamps, output):
+def download(url, durations, output):
     """
-    Download the video in the given URL. If TIMESTAMPS are specified, they will be used for trimming/subclipping.
+    Download the video in the given URL. If DURATIONS are specified, they will be used for trimming/subclipping.
 
     \b
-    Supports multiple video sites (YouTube, Facebook, Reddit, Twitter, etc).
+    Supports multiple video sites (YouTube, Facebook, Reddit, Twitter, TikTok, Instagram, LinkedIn, 9GAG, etc).
 
     \b
-    TIMESTAMPS are the trimming/subclipping points, could be none or many.
+    DURATIONS are the trimming/subclipping points, could be empty or many.
     Format: START-END START-END ...
 
     \b[dim]Examples:
@@ -51,15 +51,15 @@ def download(url, timestamps, output):
     filename = get_video_filename_from_download_logs(download_logs)
 
     output_file = output or filename
-    if timestamps:
+    if durations:
         print()
-        print_rich('Trimming the video with these timestamps:')
-        print_in_tree(branches=timestamps)
+        print_rich('Trimming the video with these durations:')
+        print_in_tree(branches=durations)
 
         # If `output` file name is specified, don't append the descriptor.
         descriptor = '' if output else 'trimmed'
 
-        clip_objects = build_clip_objects_from_timestamps(filename, timestamps)
+        clip_objects = build_clip_objects_from_timestamps(filename, durations)
         output_file = strip_bracketed_characters(output_file)
         output_file = get_effective_filename(output_file, descriptor)
 
@@ -89,7 +89,7 @@ def download(url, timestamps, output):
         else:
             output_file = strip_bracketed_characters(output_file)
 
-        print('There\'s no specified timestamps. The full video is downloaded.')
+        print('There\'s no specified duration(s). The full video is downloaded.')
 
     print()
     print_rich(f'Output file saved as [blue]{output_file}[/blue]')
