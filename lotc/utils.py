@@ -1,8 +1,6 @@
 import re
 from pathlib import Path
 
-import delegator
-from halo import Halo
 from moviepy.editor import (
     VideoFileClip,
     concatenate_videoclips,
@@ -30,23 +28,6 @@ def strip_bracketed_characters(text):
     # The VIDEO_DOWNLOADER will insert tokens in the downloaded video's filename
     # which messes-up with `rich`'s print function due to the enclosing brackets.
     return re.sub(r'\s?\[.+\]', '', text)
-
-
-@Halo(spinner='dots')
-def download_video(url):
-    command = delegator.run(f'{VIDEO_DOWNLOADER} --verbose {url}')
-
-    has_download_error = (command.return_code != 0)
-    if has_download_error:
-        print()
-        print_rich('[red]Encountered error while downloading the video![red]')
-
-        print()
-        print_rich(f'{command.err}')
-
-        exit(1)
-
-    return command.out
 
 
 def split_timestamps(timestamps):
