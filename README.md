@@ -1,6 +1,14 @@
 # 🎥✂️⛓️ lord-of-the-clips (lotc)
 Video downloader, trimmer, and merger using the terminal. Supports YouTube, Facebook, Reddit, Twitter, TikTok, Instagram, LinkedIn, 9GAG, [etc](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md). Downloads/trims at multiple points. Merges multiple clips.
 
+## ⚡Features
+- downloads video from various sites, and auto-trims/clips the specified durations
+- trims a video file, and/or clips the specified durations
+- merges video files, usually for concatenating related clips
+- provides smart output file name by default
+- accepts a custom output file name
+- leverages CLI styling/colors
+
 ## 🦾 Standing on the Shoulders of Giants
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp): video downloader
 - [moviepy](https://github.com/Zulko/moviepy): video trimmer/merger
@@ -40,7 +48,7 @@ lotc trim --help
 lotc merge --help
 ```
 
-## 💻 Demo
+## 🚀 Demo
 ![See https://github.com/ranelpadon/lord-of-the-clips/blob/main/demo.gif](https://github.com/ranelpadon/lord-of-the-clips/blob/main/demo.gif)
 
 ## ⚠️ Rate Limits
