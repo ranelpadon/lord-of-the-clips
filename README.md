@@ -41,7 +41,7 @@ lotc merge --help
 ```
 
 ## 💻 Demo
-![](https://github.com/ranelpadon/lord-of-the-clips/blob/main/demo.gif)
+![See https://github.com/ranelpadon/lord-of-the-clips/blob/main/demo.gif](https://github.com/ranelpadon/lord-of-the-clips/blob/main/demo.gif)
 
 ## ⚠️ Rate Limits
 Some sites like Facebook imposes scraping rate limits on their pages and could potentially block your IP address.

@@ -10,9 +10,9 @@ with open('README.md', encoding='utf-8') as readme:
 
 setup(
     name='lord-of-the-clips',
-    version='0.1.4',
+    version='0.1.6',
     license='MIT',
-    description='Video downloader, trimmer, and merger using the terminal. Supports YouTube, Facebook, Reddit, Twitter, TikTok, Instagram, LinkedIn, 9GAG, etc. Downloads/trims at multiple points. Merges multiple clips.',
+    description='🎥✂️⛓️ Video downloader, trimmer, and merger using the terminal. Supports YouTube, Facebook, Reddit, Twitter, TikTok, Instagram, LinkedIn, 9GAG, etc. Downloads/trims at multiple points. Merges multiple clips.',
     long_description=long_description,
     long_description_content_type='text/markdown',
     author='Ranel Padon',
