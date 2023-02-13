@@ -40,6 +40,9 @@ lotc trim --help
 lotc merge --help
 ```
 
+## :computer: Demo
+![](https://github.com/ranelpadon/lord-of-the-clips/blob/main/demo.gif)
+
 ## :warning: Rate Limits
 Some sites like Facebook imposes scraping rate limits on their pages and could potentially block your IP address.
 Hence, throttle your usage or don't use `lotc` excessively in a short amount of time.
