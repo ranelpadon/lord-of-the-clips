@@ -34,7 +34,9 @@ def cli():
     """
     Use [yellow]--help[/] in subcommands for more details.
 
-    \b[dim]
+    [dim][/]
+
+    \b
     Examples:
         [green]lotc[/] [cyan]download[/] [yellow]--help[/]
         [green]lotc[/] [cyan]trim[/] [yellow]--help[/]

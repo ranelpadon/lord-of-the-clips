@@ -20,13 +20,15 @@ def trim(filename, durations, output):
     """
     Trim the video FILENAME in the specified DURATIONS.
 
+    [dim][/]
+
     \b
     DURATIONS are the trimming points, could be none or many.
     Format: START-END START-END ...
 
-    \b[dim]Examples:
-        [green]lotc[/] [cyan]trim[/] foo.mp4 0:30-0:45
-        [green]lotc[/] [cyan]trim[/] --output bar.mp4 foo.mp4 0:30-0:45 1:10-1:40.8
+    \bExamples:
+        [green]lotc[/] [cyan]trim[/] "foo.mp4" 0:30-0:45
+        [green]lotc[/] [cyan]trim[/] --output trimmed.mp4 "foo.mp4" 0:30-0:45 1:10-1:40.8
     """
     if output:
         check_valid_file_extension(output)

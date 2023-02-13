@@ -17,10 +17,12 @@ def merge(clips, output):
     """
     Merges the specified video CLIPS (filenames).
 
-    \b[dim]
+    [dim][/]
+
+    \b
     Examples:
-        [green]lotc[/] [cyan]merge[/] foo-1.mp4 foo-2.mp4
-        [green]lotc[/] [cyan]merge[/] --output bar.mp4 foo-1.mp4 foo-2.mp4 baz.mp4
+        [green]lotc[/] [cyan]merge[/] "foo-1.mp4" "foo-2.mp4"
+        [green]lotc[/] [cyan]merge[/] --output merged.mp4 "foo-1.mp4" "foo-2.mp4" "bar.mp4"
     """
     if output:
         check_valid_file_extension(output)

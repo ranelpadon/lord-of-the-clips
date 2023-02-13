@@ -183,13 +183,13 @@ def download(url, durations, output):
     Download the video in the given URL. If DURATIONS are specified, they will be used for trimming/subclipping.
 
     \b
-    Supports multiple video sites (YouTube, Facebook, Reddit, Twitter, TikTok, Instagram, LinkedIn, 9GAG, etc).
+    Supports multiple video sites (YouTube, Facebook, Reddit, Twitter, TikTok, Instagram, LinkedIn, etc).
 
     \b
     DURATIONS are the trimming/subclipping points, could be empty or many.
     Format: START-END START-END ...
 
-    \b[dim]Examples:
+    \bExamples:
         [green]lotc[/] [cyan]download[/] "https://www.youtube.com/watch?v=jSRHpA2giUk"
         [green]lotc[/] [cyan]download[/] "https://www.youtube.com/watch?v=jSRHpA2giUk" 0:30-0:45
         [green]lotc[/] [cyan]download[/] "https://www.youtube.com/watch?v=jSRHpA2giUk" 0:30-0:45 1:10-1:40.8
