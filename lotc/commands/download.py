@@ -190,9 +190,9 @@ def download(url, durations, output):
     Format: START-END START-END ...
 
     \b[dim]Examples:
-        [green]lotc[/] [cyan]download[/] https://www.youtube.com/watch?v=Y7JG63IuaWs
-        [green]lotc[/] [cyan]download[/] https://www.youtube.com/watch?v=Y7JG63IuaWs 0:30-0:45
-        [green]lotc[/] [cyan]download[/] --output bar.mp4 https://www.youtube.com/watch?v=Y7JG63IuaWs 0:30-0:45 1:10-1:40.8
+        [green]lotc[/] [cyan]download[/] https://www.youtube.com/watch?v=ysNifJ-KEQY
+        [green]lotc[/] [cyan]download[/] https://www.youtube.com/watch?v=ysNifJ-KEQY 0:30-0:45
+        [green]lotc[/] [cyan]download[/] --output bar.mp4 https://www.youtube.com/watch?v=ysNifJ-KEQY 0:30-0:45 1:10-1:40.8
     """
     if output:
         check_valid_file_extension(output)
