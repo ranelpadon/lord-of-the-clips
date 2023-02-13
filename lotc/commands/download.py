@@ -190,9 +190,10 @@ def download(url, durations, output):
     Format: START-END START-END ...
 
     \b[dim]Examples:
-        [green]lotc[/] [cyan]download[/] https://www.youtube.com/watch?v=ysNifJ-KEQY
-        [green]lotc[/] [cyan]download[/] https://www.youtube.com/watch?v=ysNifJ-KEQY 0:30-0:45
-        [green]lotc[/] [cyan]download[/] --output bar.mp4 https://www.youtube.com/watch?v=ysNifJ-KEQY 0:30-0:45 1:10-1:40.8
+        [green]lotc[/] [cyan]download[/] "https://www.youtube.com/watch?v=jSRHpA2giUk"
+        [green]lotc[/] [cyan]download[/] "https://www.youtube.com/watch?v=jSRHpA2giUk" 0:30-0:45
+        [green]lotc[/] [cyan]download[/] "https://www.youtube.com/watch?v=jSRHpA2giUk" 0:30-0:45 1:10-1:40.8
+        [green]lotc[/] [cyan]download[/] --output foo.mp4 "https://www.youtube.com/watch?v=jSRHpA2giUk" 0:30-0:45 1:10-1:40.8
     """
     if output:
         check_valid_file_extension(output)
@@ -212,14 +213,15 @@ def download(url, durations, output):
         # If `output` file name is specified, don't append the descriptor.
         descriptor = '' if output else 'trimmed'
 
-        clip_objects = build_clip_objects_from_timestamps(filename, durations)
-        output_file = strip_bracketed_characters(output_file)
-        output_file = get_effective_filename(output_file, descriptor)
+        with Halo(spinner='dots'):
+            clip_objects = build_clip_objects_from_timestamps(filename, durations)
+            output_file = strip_bracketed_characters(output_file)
+            output_file = get_effective_filename(output_file, descriptor)
 
-        merge_clips_and_save(clip_objects, output_file)
+            merge_clips_and_save(clip_objects, output_file)
 
-        # Remove the original video downloaded by VIDEO_DOWNLOADER.
-        os.remove(filename)
+            # Remove the original video downloaded by VIDEO_DOWNLOADER.
+            os.remove(filename)
     else:
         # Convert to `mp4` format if needed.
         # Converting HD videos using MoviePy seems to have better quality

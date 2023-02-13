@@ -155,6 +155,6 @@ def print_in_tree(header='', branches=None):
         branches = []
 
     for branch in branches:
-        tree.add(branch)
+        tree.add(f'[blue]{branch}[/]')
 
     print_rich(tree)
