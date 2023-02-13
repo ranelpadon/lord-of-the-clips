@@ -1,17 +1,13 @@
-# lord-of-the-clips (lotc)
+# :movie_camera::scissors::chains: lord-of-the-clips (lotc)
 Video downloader, trimmer, and merger using the terminal. Supports YouTube, Facebook, Reddit, Twitter, TikTok, Instagram, LinkedIn, 9GAG, [etc](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md). Downloads/trims at multiple points. Merges multiple clips.
 
-## Standing on the Shoulders of Giants
+## :mechanical_arm: Standing on the Shoulders of Giants
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp): video downloader
-    - `ffmpeg` is [strongly recommended](https://github.com/yt-dlp/yt-dlp#strongly-recommended) to be installed since some websites have split video/audio files:
-        - Mac: `brew install ffmpeg`
-        - Ubuntu: `sudo apt install ffmpeg`
-        - [Others](https://ffmpeg.org/download.html)
 - [moviepy](https://github.com/Zulko/moviepy): video trimmer/merger
 - [click](https://github.com/pallets/click/): CLI app creator
 - [rich](https://github.com/Textualize/rich) / [rich-click](https://github.com/ewels/rich-click/): CLI app styler
 
-## Installation
+## :hammer: Installation
 
 ```shell
 pip install lord-of-the-clips
@@ -20,8 +16,15 @@ pip install lord-of-the-clips
 This will install a global `lotc` shell command which you could run in the terminal.
 `lotc` is the acronym for `lord-of-the-clips`.
 
+## :wrench: Dependencies
 
-## Usage
+`ffmpeg` is [strongly recommended](https://github.com/yt-dlp/yt-dlp#strongly-recommended) by `yt-dlp` to be installed since some websites have split video/audio files:
+- Mac: `brew install ffmpeg`
+- Ubuntu: `sudo apt install ffmpeg`
+- [Others](https://ffmpeg.org/download.html)
+
+
+## :gear: Usage
 
 For further details/sample usages, run this command:
 
@@ -36,3 +39,7 @@ lotc download --help
 lotc trim --help
 lotc merge --help
 ```
+
+## :warning: Rate Limits
+Some sites like Facebook imposes scraping rate limits on their pages and could potentially block your IP address.
+Hence, throttle your usage or don't use `lotc` excessively in a short amount of time.
