@@ -7,9 +7,9 @@ As per the [Pareto Principle](https://en.wikipedia.org/wiki/Pareto_principle), a
 Got tired of these chores eventually, and I want a tool that given a URL and timestamps/durations will download the video AND auto-clip them at the desired segments in a single command AND it should support multiple sites. This is the missing tool that I wanted. In the simplest case, this `lotc` CLI app will download the full video.
 
 ## ⚡Features
-- downloads a videos and auto-trims/clips the specified durations
-- trims a video file and/or clips the specified durations
-- merges video files, usually for concatenating related clips
+- downloads a video and auto-trims/clips the specified durations
+- trims a saved video file and/or clips the specified durations
+- merges saved video files, usually for concatenating related clips
 - provides smart output file name by default
 - accepts a custom output file name
 - leverages CLI styling for better experience
