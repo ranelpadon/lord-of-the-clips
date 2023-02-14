@@ -1,13 +1,18 @@
-# 🎥✂️⛓️ lord-of-the-clips (lotc)
+# 🎥✂️🔗 lord-of-the-clips (lotc)
 Video downloader, trimmer, and merger using the terminal. Supports YouTube, Facebook, Reddit, Twitter, TikTok, Instagram, LinkedIn, 9GAG, [etc](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md). Downloads/trims at multiple points. Merges multiple clips.
 
+## ✨ Background
+As per the [Pareto Principle](https://en.wikipedia.org/wiki/Pareto_principle), a video usually has its best parts. Hence, Reels/Stories/Shorts are popular nowadays. Likewise, I frequently download videos from various sites (e.g. YouTube, Facebook, Reddit, etc) using various online video downloaders, then I clip the most interesting/funniest/best parts only which is usually shared in private/chat groups or posted in social media sites.
+
+Got tired of these chores eventually, and I want a tool that given a URL and timestamps/durations will download the video AND auto-clip them at the desired segments in a single command AND it should support multiple sites. This is the missing tool that I wanted. In the simplest case, this `lotc` CLI app will download the full video.
+
 ## ⚡Features
-- downloads video from various sites, and auto-trims/clips the specified durations
-- trims a video file, and/or clips the specified durations
+- downloads a videos and auto-trims/clips the specified durations
+- trims a video file and/or clips the specified durations
 - merges video files, usually for concatenating related clips
 - provides smart output file name by default
 - accepts a custom output file name
-- leverages CLI styling/colors
+- leverages CLI styling for better experience
 
 ## 🦾 Standing on the Shoulders of Giants
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp): video downloader
@@ -49,8 +54,9 @@ lotc merge --help
 ```
 
 ## 🚀 Demo
+The GIF below demonstrates the output of `lotc --help` and `lotc download --help` and running the examples provided in the output:
 ![See https://github.com/ranelpadon/lord-of-the-clips/blob/main/demo.gif](https://github.com/ranelpadon/lord-of-the-clips/blob/main/demo.gif)
 
 ## ⚠️ Rate Limits
-Some sites like Facebook imposes scraping rate limits on their pages and could potentially block your IP address.
+Some sites (e.g. Facebook) imposes scraping rate limits on their pages and could cause issues in your succeeding downloads.
 Hence, throttle your usage or don't use `lotc` excessively in a short amount of time.
