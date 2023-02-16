@@ -54,8 +54,8 @@ lotc merge --help
 ```
 
 ## 🚀 Demo
-The GIF below demonstrates the output of `lotc --help` and `lotc download --help` and running the examples provided in the output:
-![See https://github.com/ranelpadon/lord-of-the-clips/blob/main/demo.gif](https://github.com/ranelpadon/lord-of-the-clips/blob/main/demo.gif)
+The GIF below demonstrates the output of `lotc --help` command and its `lotc download --help` subcommand, and running one of the examples provided in the output:
+![See https://github.com/ranelpadon/lord-of-the-clips/blob/main/demo.gif](https://github.com/ranelpadon/lord-of-the-clips#-demo)
 
 ## ⚠️ Rate Limits
 Some sites (e.g. Facebook) imposes scraping rate limits on their pages and could cause issues in your succeeding downloads.
