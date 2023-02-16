@@ -2,7 +2,7 @@
 Video downloader, trimmer, and merger using the terminal. Supports YouTube, Facebook, Reddit, Twitter, TikTok, Instagram, LinkedIn, 9GAG, [etc](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md). Downloads/trims at multiple points. Merges multiple clips.
 
 ## 💫 Background
-As per the [Pareto Principle](https://en.wikipedia.org/wiki/Pareto_principle), a video usually has its best parts. Hence, Reels/Shorts/Stories are popular nowadays. Likewise, I frequently download videos from various sites (e.g. YouTube, Facebook, Reddit, etc) using various online video downloaders, then I clip the most interesting/best parts only which is usually posted in social media sites or shared in private/group chats.
+As per the [Pareto Principle](https://en.wikipedia.org/wiki/Pareto_principle), a video usually has its best parts. Hence, Reels/Shorts/Stories are popular nowadays. Likewise, I frequently download videos from various sites (e.g. YouTube, Facebook, Reddit, etc) using various online video downloaders, then I clip the most interesting/best parts only which are usually posted in social media sites or shared on private/group chats.
 
 Got tired of these routines eventually, and I want a tool that given a URL and timestamps/durations will download the video AND auto-clip them at the desired segments in a single command AND it should support multiple sites. This is the missing tool that I wanted. In the simplest case, this `lotc` CLI app will download the full video.
 

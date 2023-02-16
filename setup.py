@@ -3,17 +3,16 @@ from setuptools import (
     setup,
 )
 
-
 with open('README.md', encoding='utf-8') as readme:
     long_description = readme.read()
 
 
 setup(
     name='lord-of-the-clips',
-    version='0.1.6',
+    version='0.1.10',
     license='MIT',
     description=(
-        '🎥✂️⛓️ Video downloader, trimmer, and merger using the terminal.'
+        '🎥✂️🔗 Video downloader, trimmer, and merger using the terminal.'
         ' Supports YouTube, Facebook, Reddit, Twitter, TikTok, Instagram, LinkedIn, 9GAG, etc.'
         ' Downloads/trims at multiple points. Merges multiple clips.'
     ),
