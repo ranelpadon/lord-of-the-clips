@@ -11,11 +11,11 @@ from lotc.utils import (
 
 
 @click.command()
-@click.argument('clips', nargs=-1, required=True)
+@click.argument('filenames', nargs=-1, required=True)
 @click.option('-o', '--output', help='The output file name (e.g. "merged.mp4"). Should have the ".mp4" file extension.')
-def merge(clips, output):
+def merge(filenames, output):
     """
-    Merges the specified video CLIPS (filenames).
+    Merge the specified video FILENAMES.
 
     [dim][/]
 
@@ -28,9 +28,9 @@ def merge(clips, output):
         check_valid_file_extension(output)
 
     print_rich('Merging these video clips:')
-    print_in_tree(branches=clips)
+    print_in_tree(branches=filenames)
 
-    clip_names = clips
+    clip_names = filenames
     clip_objects = build_clip_objects_from_clip_names(clip_names)
     output_file = output or get_concatenated_clip_names(clip_names)
 
