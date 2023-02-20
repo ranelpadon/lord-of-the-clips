@@ -9,7 +9,7 @@ with open('README.md', encoding='utf-8') as readme:
 
 setup(
     name='lord-of-the-clips',
-    version='0.1.11',
+    version='0.1.12',
     license='MIT',
     description=(
         '🎥✂️🔗 Video downloader, trimmer, and merger using the terminal.'
