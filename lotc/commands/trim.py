@@ -1,5 +1,5 @@
-
 import rich_click as click
+from halo import Halo
 
 from lotc.utils import (
     build_clip_objects_from_timestamps,
@@ -43,11 +43,12 @@ def trim(filename, durations, output):
 
         check_file_exists(filename)
 
-        clip_objects = build_clip_objects_from_timestamps(filename, durations)
         output_file = output or filename
-        output_file = get_effective_filename(output_file, descriptor)
+        with Halo(spinner='dots'):
+            clip_objects = build_clip_objects_from_timestamps(filename, durations)
+            output_file = get_effective_filename(output_file, descriptor)
+            merge_clips_and_save(clip_objects, output_file)
 
-        merge_clips_and_save(clip_objects, output_file)
-        print_rich(f'\nOutput file saved as [blue]{output_file}[/blue]')
+        print_rich(f'\nOutput file saved as [blue]{output_file}[/]')
     else:
-        print_rich(f'There\'s no specified duration(s). The [blue]{filename}[/blue] will not be trimmed.')
+        print_rich(f'There\'s no specified duration(s). The [blue]{filename}[/] will not be trimmed.')

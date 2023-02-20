@@ -1,4 +1,5 @@
 import rich_click as click
+from halo import Halo
 
 from lotc.utils import (
     build_clip_objects_from_clip_names,
@@ -30,9 +31,9 @@ def merge(filenames, output):
     print_rich('Merging these video clips:')
     print_in_tree(branches=filenames)
 
-    clip_names = filenames
-    clip_objects = build_clip_objects_from_clip_names(clip_names)
-    output_file = output or get_concatenated_clip_names(clip_names)
+    output_file = output or get_concatenated_clip_names(filenames)
+    with Halo(spinner='dots'):
+        clip_objects = build_clip_objects_from_clip_names(filenames)
+        merge_clips_and_save(clip_objects, output_file)
 
-    merge_clips_and_save(clip_objects, output_file)
-    print_rich(f'\nOutput file saved as [blue]{output_file}[/blue]')
+    print_rich(f'\nOutput file saved as [blue]{output_file}[/]')

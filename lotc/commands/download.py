@@ -33,7 +33,7 @@ def _download_video(url):
 
     has_download_error = (command.return_code != 0)
     if has_download_error:
-        print_rich('[red]Encountered error while downloading the video![red]')
+        print_rich('[red]Encountered error while downloading the video![/]')
         print()
 
         is_facebook_url = ('facebook' in url)
@@ -248,4 +248,4 @@ def download(url, durations, output):
         print('There\'s no specified duration(s). The full video is downloaded.')
         print()
 
-    print_rich(f'Output file saved as [blue]{output_file}[/blue]')
+    print_rich(f'Output file saved as [blue]{output_file}[/]')
