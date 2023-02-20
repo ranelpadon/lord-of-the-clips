@@ -36,4 +36,5 @@ def merge(filenames, output):
         clip_objects = build_clip_objects_from_clip_names(filenames)
         merge_clips_and_save(clip_objects, output_file)
 
-    print_rich(f'\nOutput file saved as [blue]{output_file}[/]')
+    print()
+    print_rich(f'Output file saved as [blue]{output_file}[/]')

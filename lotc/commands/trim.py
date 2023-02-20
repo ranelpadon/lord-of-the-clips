@@ -49,6 +49,7 @@ def trim(filename, durations, output):
             output_file = get_effective_filename(output_file, descriptor)
             merge_clips_and_save(clip_objects, output_file)
 
-        print_rich(f'\nOutput file saved as [blue]{output_file}[/]')
+        print()
+        print_rich(f'Output file saved as [blue]{output_file}[/]')
     else:
         print_rich(f'There\'s no specified duration(s). The [blue]{filename}[/] will not be trimmed.')

@@ -1,9 +1,9 @@
+import rich_click as click
+from rich.traceback import install
+
 from lotc.commands.download import download
 from lotc.commands.merge import merge
 from lotc.commands.trim import trim
-
-import rich_click as click
-from rich.traceback import install
 
 # Improve traceback rendering.
 install()
